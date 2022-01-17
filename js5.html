@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf">
+    <title>1234</title>
+    <meta name="viewport" content="width=device-width, initial1-scale=1.0">
+  </head>
+
+  <body>
+    <script>
+      function hskim(left, right){
+        document.write(left+right+'<br>');
+      }
+      hskim(2,3);
+      hskim(3,4);
+    </script>
+
+    <script>
+      function hskim(left, right){
+        document.write('<div style="color:red">'+left+right+'</div><br>');
+      }
+      hskim(2,3);
+      hskim(3,4);
+    </script>
+
+
+
+    <script>
+      function hskim2(left, right){ // return을 쓰니까 실제 먹을 수 있는 함수 사용 방법이 다양해짐
+      return left+right; //
+      }
+      document.write('<div style="color:red">'+hskim2(2,3)+'</div><br>');
+
+    </script>
+  </body>
+</html>

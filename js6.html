@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+
+  <body>
+    <h1>object</h1>
+    <h2>Create</h2>
+
+    <script> //cowerkers는 변수. 객체를 만들때는 아래처럼 중괄호를 이용함
+      var cowerkersbaeyeol =[]//배열은 대괄호
+      var coworkers = {
+          "grogrammer" : "hskim", //객체에는 함수도 담을 수 있다 ㄷㄷ;;
+          "designer" : "jhseo"
+      }
+
+      document.write(coworkers.grogrammer+"<br>");
+      document.write(coworkers.designer+"<br>");
+      coworkers.gammer = "jskim";
+      document.write(coworkers.gammer+"<br>");
+      coworkers["pro gammer"] = "yhjo";
+      document.write(coworkers["pro gammer"]); //띄어쓰기한 객체를 쓰고싶으면 이렇게
+
+    </script>
+
+      <h2>dfef</h2>
+
+    <script>
+      for(var key in coworkers) { //coworkers안에 있는  key(각각의 객체, 꼭 key를 써야되는건 아님)을 불러오는데 for는 그것을 반복적으로
+
+        document.write(key + " : " + coworkers[key]+"<br>");
+      }
+    </script>
+
+  </body>
+
+</html>
+
+<br>
+객체 : 이름이 있는 정리정돈 상자라고 이해하면 됨.

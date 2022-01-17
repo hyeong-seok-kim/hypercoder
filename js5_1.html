@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+  <meta charset="utf-8">
+  <title>function과 return 연습하기</title>
+  <meta name="viewport" content="width=device-width, initial1-scale=1.0">
+</head>
+
+<body>
+
+
+    <h1><a href="js5_1.html">HTML</a></h1>
+
+    <!--배열1 -->
+    <script>
+        var baeyeol=["1","2","3","4"];
+        document.write(baeyeol[0],'<br/>');
+        document.write(baeyeol['length']);
+    </script>
+
+    <!--배열2 -->
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+
+    <script>
+        var alist = document.querySelectorAll('li');
+        var i = 0;
+
+        while(i<alist.length) {
+        alist[i].style.color='blue';
+        i=i+1;
+        }
+
+    </script>
+
+    <!--function 예제1-->
+    <script>
+        function list2set (){
+          document.write('<li>',3,'</li>');
+          document.write('<li>',5,'</li>');
+        }
+        document.write('<li>',1,'</li>');
+        list2set(); // 함수로 대체하여 표현할 수 있었음.
+        document.write('<li>',2,'</li>');
+        list2set();
+        document.write('<li>',5,'</li>');
+    </script>
+
+    <!--function 예제2 -->
+ <br>
+    <script>
+      function sum (left, right){ //여기서 괄호 안에 저런식으로 문자를 넣으면 저게 파라미터(매개변수)가 됨.
+      document.write(left+right+'<br>'); //파라미터를 만든걸 이용하여 이 괄호안을 구성하면
+      }
+      document.write(sum(1,3)); //왜이렇게하면 못쓸까? return이 없어서? 아니. 반환을 못받아서.
+      sum(1,3);
+
+      document.write(1+1); //괄호 안에 숫자는 수식기호를 썼을 경우 연산처리 되는 것을 볼 수 있음.
+
+
+    </script>
+
+    <!--function과 return 예제 1 -->
+
+    <script>
+      function sum2(left, right){
+        return left+right;
+      }
+
+      document.write(sum2(1,3));
+
+    </script>
+
+    <!--객체 (object) -->
+    객체에 속해있는 함수는 함수라부르지않고 메소드라고 부른다.
+
+
+</body>
+</html>
