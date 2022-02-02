@@ -1,0 +1,51 @@
+body {
+  background-color: black;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1 {
+  border: 0px white solid;
+  color: yellow;
+  margin: 0;
+  font-size: 5rem;
+  top: 0;
+  left: 50px;
+  text-align: left;
+  font-family: fantasy;
+}
+
+.mainTitle {
+  background-size: 100%;
+  margin-right: 10px;
+  padding-left: 30px;
+  margin-bottom: 20px;
+}
+
+.manuHorizontalityLine {
+  position: relative;
+  transform: translate(1%, 0%);
+  border: #828282	2px solid;
+  width: 80%;
+  margin-bottom: 30px;
+  padding-left: 0px;
+}
+
+.mainManu {
+  color: #93FB93;
+  font-size: 2rem;
+  font-family: fantasy;
+  box-sizing: border-box;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.manuListDetail {
+  color: white;
+  font-size: 2.5rem;
+  font-family: fantasy;
+  padding-right: 50px;
+}
