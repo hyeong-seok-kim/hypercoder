@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const rawInput = Number(prompt("태어난 연도를 입력해주세요.",""));
+        const a = "자,축,인,묘,진,사,오,미,신,유,술,해".split(",");
+        const b = "경,신,임,계,갑,을,병,정".split(",");
+
+        alert(rawInput + "년생은 " + b[(rawInput%10)] + a[(rawInput%12)] + "년 입니다.");
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
