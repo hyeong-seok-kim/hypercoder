@@ -7,10 +7,13 @@
     <title>Document</title>
     <script>
         let i = 0;
-        while (true) {
-            alert(i + "번째 반복입니다.")
+
+        while (confirm("반복을 계속 실행하시겠습니까?")) {
+            alert(i+"번째 반복입니다.")
             i=1+i;
         }
+
+
     </script>
 </head>
 <body>

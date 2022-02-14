@@ -6,11 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        const array = ["우유 구매","업무 메일 확인하기","필라테스 수업"]
+        
+        for(let i = 0;true;i++) {
+            alert(i+"번째 반복문입니다.")
 
-        for (let i = 0; i< array.length ; i++) {
-            document.write(i+"번째 할 일은:" + array[i])
+        const relay = confirm("반복을 계속하시겠습니까?")
+        
+        if (!relay) {
+            break
         }
+
+        }
+
+
 
     </script>
 </head>

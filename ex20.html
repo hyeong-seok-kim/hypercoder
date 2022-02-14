@@ -6,9 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-              
-        for (let i = 0 ; i<10 ; i++) {
-            document.write("당신의 숫자는" + i + "번째 입니다.")
+        const array = ["1","2","3","4","5"]
+        let i = 0;
+
+        while (i===0 || i<=array.length-1) {
+            document.write(i + ":" + array[i])
+            i++
         }
 
 
