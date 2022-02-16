@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마름모 형태의 피라미드 만들어보기</title>
+    <script>
+        let output = ""
+        let a = 1
+        let b = 7
+        
+        for (let i = 0 ; i<5 ; i++) {
+            for (let j = 5 ; j>i ; j--) {
+                output = output + " "
+            }
+
+            for (let k = 0 ; k<a ; k++) {
+                output = output + "*"
+            }
+            a=a+2
+            output = output + "\n"
+        }
+
+        for (let q = 0 ; q<7 ; q++) {
+            for (let j = 0 ; j<q+2 ; j++) {
+                output = output + " "
+            }
+
+            for (let k = 0 ; k<b ; k++) {
+                output = output + "*"
+            }
+
+            b=b-2
+            output = output + "\n"
+
+            }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

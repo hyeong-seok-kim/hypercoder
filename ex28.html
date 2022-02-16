@@ -6,18 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        
-        for(let i = 0;true;i++) {
-            alert(i+"번째 반복문입니다.")
+        function sum(x, y) {
+            let output = 0
 
-        const relay = confirm("반복을 계속하시겠습니까?")
-        
-        if (!relay) {
-            break
+            for(let i = x ; i<=y ; i++) {
+                output = output + i
+            }
+
+            return output
         }
-
-        }
-
 
 
     </script>
