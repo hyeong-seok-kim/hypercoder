@@ -4,27 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>매개변수에 배열로 넣었을 때와 숫자로 넣었을 때 반응하여 최소값을 구하는 예제</title>
+    <title>매개변수로 max(1,2,3,4)와 같은 숫자를 배열로 받는 max().함수를 만들어보자</title>
+
     <script>
-        function min(array) {
+
+        const max = function(...array){
             let output = array[0]
-            
-        if (typeof(array) === "Object") {         
+
             for (const value of array) {
-                if (output > value) {
+                if(output < value){
                     output = value
                 }
-            }   
+
+            }
             return output
         }
 
-        else if (typeof(array) === "number") {
-
-        }
-
-        }
-
-
+        // ...array 이라는 나머지 매개변수를 이용하면, max() 함수의 매개변수로 숫자형태가 들어올 경우 이를 배열로 인식함
 
     </script>
 </head>
