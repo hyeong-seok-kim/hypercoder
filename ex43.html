@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>콜백함수를 호출하여 일정 시간동안 실행과 멈춤을 도와주는 타이머 함수</title>
+    <script>
+        setTimeout(() => {  //1초 있다가 실행
+            console.log(`1초마다 실행될 예정입니다.`)
+        },0)
+
+        let id
+        let sec = 1
+        id = setInterval(() => {
+            console.log(`${sec}초에 실행된 메시지`)
+            sec++
+        },1000)
+
+        setTimeout(() => { 
+        console.log(`7초가 되는 순간 타이머를 종료합니다.`)
+        clearInterval(id)
+        },7000)
+
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>
