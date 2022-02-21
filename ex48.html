@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문자열 내부에 안녕, 하세, 없는 문자열 이 있는지 확인하는 예제</title>
+    <script>
+        const j = '안녕하세요'
+        
+        console.log(j.indexOf('안녕'))
+
+        console.log(j.indexOf("없는 문자열")) 
+
+        //indexOf() 메소드는 본인이 속한 객체에서 자신이 찾고자하는 문자열을 찾아 index값으로 리턴해주는 것.
+
+
+        const i = [1,2,3]
+
+        console.log(i.indexOf(1))
+
+        //배열에서도 제대로 먹히네.
+
+        //그래서 위 활용으로 문자열이 존재하는지를  boolean 값으로 받아낼 수 있는데
+
+        console.log(j.indexOf('안녕')>=0)
+        // 결과값으로 true를 받을 수 있음.
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>
