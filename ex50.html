@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자 N번째 소숫점 자리수까지 출력하는 예제</title>
+    <SCript>
+        const i = 123.12345
+
+        console.log(i.toFixed(3))  //이렇게하면 세번째 자리까지만 출력하네
+        // 이제 이걸 trototype에 객체를 추가해서 함수실행으로 돌려보자
+
+        Number.prototype.hskim = function(data) {
+            return this.toFixed(data)  //this는 본인이 속한 객체를 부르는 키워드
+        }
+
+        const j = 42134.23123 //숫자 자료형
+
+        console.log(j.hskim(3)) //근데 난 prototype을 이용해서 숫자자료형인 j를 객체로 만들었다.
+
+
+
+
+    </SCript>
+</head>
+<body>
+    
+</body>
+</html>
