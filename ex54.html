@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forEach, map 메소드 복습</title>
+    <script>
+        let i = [324,12,51,16,67]
+
+        i = i.map(function (value,index,array) {
+            return value * value
+        })
+
+        console.log(i)
+      
+        
+        i.forEach(function(value,index,array){
+            console.log(`${value}는${index}번째이며 ${array}배열에 존재한다.`)
+        })
+        
+        i.forEach(console.log)
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

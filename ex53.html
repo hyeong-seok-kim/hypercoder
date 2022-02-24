@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>split()메소드 사용하기</title>
+    <script>
+        let i = 
+        `
+        일자,달러,엔,유로
+        02,1151.8,1797.46,3252.27
+        03,1341.7,1237.56,1262.37
+        04,1161.6,1027.26,1162.47
+        05,1181.5,1357.66,5869.57
+        06,1441.4,1087.78,1269.67
+        07,1142.3,1245.48,6232.77       
+        `
+        console.log(i)
+
+        i = i.trim()
+
+        console.log(i)
+
+        i = i.split('\n')  //줄바꿈을 기준으로 배열 선언을 해버리네
+
+        console.log(i)
+
+        i = i.map(function(line){line.split(',')})
+        [Array(4),Array(4),Array(4),Array(4),Array(4),Array(4)]
+
+        console.log(i)
+
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>
