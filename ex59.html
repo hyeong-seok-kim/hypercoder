@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전개연산자를 이용하여 객체도 얕은, 깊은 복사해보기</title>
+    <script>
+        let object = {
+            name : '김형석',
+            age : '31살',
+            school : '호서대'
+        } 
+
+        const 김지수 = object
+        김지수.name = '김지수'
+        김지수.school = '순천향대'
+
+        console.log(김지수)
+        console.log(object)
+
+//------------------------------------------- 아래는 깊은복사
+
+        let object1 = {
+            name : '김형석',
+            age : '31살',
+            school : '호서대'
+        } 
+
+        const object2 = {...object1}  //전개연산자를 사용하니까 중간에 복사되고 말았네.
+        object2.name = '김지수'
+        object2.school = '순천향대'
+
+        console.log(object1)
+        console.log(object2)
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

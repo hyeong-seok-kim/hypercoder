@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>얕은복사의 반대인 깊은복사를 전개연산자를 이용하여 해결해보기</title>
+    <script>
+        const 배열1 = ['김형석','김진석']
+        const 배열2 = [...배열1]  //이렇게 전개연산자 형태로 복사하면 실행했을 때, 배열1과 2가 다르게 출력함.
+        배열2.push('김광용')
+        배열2.push('유승희')
+
+        console.log(배열1)
+        console.log(배열2)   
+
+        //전개연산자의 활용을 통한 예제
+
+        const 사람1 = ['윤오영','김지수']
+        const 사람2 = ['박진성', ...사람1 ,'박종석']  //이렇게 전개연산자를 활용해서 요소들의 위치를 바꾸어 복사할 수 있음.
+        사람2.push('한상혁')
+        사람2.push('조영호')
+
+        console.log(사람1)
+        console.log(사람2)   
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
