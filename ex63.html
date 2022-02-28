@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문서 속성으로 글자 조작해보기</title>
+    <script>
+        document.addEventListener('DOMContentLoaded',() => {
+            const a = document.querySelector('#a')
+            const b = document.querySelector('#b')
+
+            //값을 추출한다.
+            console.log(a.textContent)    
+            console.log(b.innerHTML)
+
+            //값을 넣는다.
+            //두 가지 속성에 대해서 기억해라 
+            //<br>태그에 대한 반응으로 textContent는 br태그를 그냥 문자열로 인식하지만, innerHTML은 태그로 인식
+            //보안의 문제로 비교적 textContent 속성을 많이 씀
+            a.textContent = '김형<br>석1'
+            b.innerHTML = '김형<br>석2'
+
+        })
+
+    </script>
+
+</head>
+<body>
+    <h1 id="a">textContent 속성 기존 문자열</h1>
+    <h1 id="b">innerHTML 속송 기존 문자열</h1>
+
+    
+</body>
+</html>
