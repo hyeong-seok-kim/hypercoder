@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문서 객체의 속성 조작하기</title>
+    <script>
+        document.addEventListener('DOMContentLoaded',()=>{
+            const img = document.querySelector('img')
+
+            //값을 넣는 행위
+            //img.src='http://placekitten.com/200/200'
+
+            //값을 넣는 행위
+            img.setAttribute('정보','http://placekitten.com/200/200')
+
+            //값을 추출하는 행위
+            //console.log('img.src')
+
+            //getAttribute를 쓸때는 사용자 속성을 조작할때 쓰는 것. 정보와 같이 원래 없는 속성같은걸 임의로 만들었을 때 사용
+            console.log(img.getAttribute('정보'))
+
+        })
+
+
+    </script>
+</head>
+<body>
+    <img src="" alt="" 정보="">
+
+
+    
+</body>
+</html>
