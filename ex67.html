@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>createElement 속성과 appendChild 속성을 이용하여 문서 객체 생성하는 예제 해보기</title>
+    <script>
+        document.addEventListener('DOMContentLoaded',()=>{
+            const header = document.createElement('h1') //이렇게하면 h1 태그가 생성됨
+            header.style.color = 'red'
+            header.textContent = '속성 생성하기 연습'
+
+        
+            const body = document.querySelector('body') //일단 body 태그를 선택해서 body 식별자에 넣어주고
+            body.appendChild(header) //body태그에 header 식별자를 붙여준다.     
+            setTimeout(()=>{
+                body.removeChild(header)
+            },2000)
+        })
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

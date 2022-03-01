@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class 속성가지고 사진의 크기별로 불러와보기</title>
+    <script>
+        document.addEventListener('DOMContentLoaded',()=>{
+            const rects = document.querySelectorAll('.rect')
+            const h1 = document.querySelector('h1')
+            //h1.style. 이렇게하면 style속성으로 css를 사용해서 지정할 수 있는 스타일들을 볼 수 있음.
+            rects.forEach((value,index)=>{
+                
+                value.src = 'http://placekitten.com'+`/${(index+1)*100}/${(index+1)*100}`
+                
+            })
+
+        })
+
+    </script>
+</head>
+<body>
+    <h1></h1>
+    <img class="rect">
+    <img class="rect">
+    <img class="rect">
+    <img class="rect">
+    
+</body>
+</html>
