@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>문서 객체 이동 이동시키는 것 해보기</title>
+    <title>문서 객체 이동, 각 태그를 왔다갔다 이동시키는 것 해보기_살짝 심화 버전 1</title>
     <script>
         document.addEventListener('DOMContentLoaded',()=>{
             const header = document.createElement('h2')
@@ -13,13 +13,23 @@
             const first = document.querySelector('.first')
             const second = document.querySelector('.second')
 
-            first.appendChild(header)        
-            setTimeout(()=>{
-                second.appendChild(header)
-            },2000)
-        })
-
+            const toFirst = () => {
+                first.appendChild(header)
+                setTimeout(()=>{
+                    toSecond()
+                },1000)}
         
+            const toSecond = () => {
+                second.appendChild(header)
+                setTimeout(()=>{
+                    toFirst()
+                },1000)}
+
+                toFirst()
+        })
+        
+        
+
     </script>
 </head>
 <body>
