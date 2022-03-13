@@ -1,45 +1,22 @@
-*{
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-body {
-  background-color: black;
+#container {
+  display: flex;
 }
 
-.container{
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%); 이렇게만 표기해주면 container라는 class 선택자는 화면의 중앙에 위치할 수 있음.
-  perspective: 1000px;
-  gra
+.hide {
+  display: none;
 }
 
-.flip-btn{
-  width: 200px;
-  height: 100px;
-  color: white;
-  text-align: center;
-  line-height: 100px;
-  transform-style: preserve-3d;
-  transition: .5s;
-  cursor: pointer;
+.inputSection {
+  width: 80vh;
+  padding: 10px;
 }
 
-.flip-btn:hover{
-  transform: rotateX(-180deg);
-}
-
-.front{
-  background-color: goldenrod;
-  height: 100px;
-  transform: translateZ(50px);
-}
-
-.back{
-  background-color: darkgoldenrod;
-  height: 100px;
-  transform: rotateX(90deg) translateZ(150px);
+h2 {
+  padding: 20px;
 }
