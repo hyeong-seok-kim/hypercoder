@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <script>
+        function makeAddressBook(addressBook, user) {
+        let firstLetter = user.name[0];     //addressBook = { name: 'Tim', age: 40 },
+            console.log(firstLetter)                             //user = { name: 'Satya', age: 30 },
+                                            //firstLetter = 'S'
+
+        if(firstLetter in addressBook) {  // { name: 'Tim', age: 40 } 이 안에 'S' 가 있다면 TRUE 근데 없네
+            addressBook[firstLetter].push(user);
+            console.log(addressBook[firstLetter])
+        } else {
+            addressBook[firstLetter] = [];  //
+            addressBook[firstLetter].push(user);
+        }
+
+            return addressBook;
+        }
+
+        let users = { name: 'Tim', age: 40 }
+        let i = users.name[0];
+        console.log(users[i])
+
+    </script>
+
+</body>
+</html>

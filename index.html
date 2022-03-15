@@ -10,11 +10,16 @@
 
 <body>
     <script>
-    const i = new Date('1970.03.01');
-    console.log(i)
-    const k = i.getFullYear();
-    console.log(k)
-    
+        function joinName(resultStr, user) {
+        resultStr = resultStr + user.name + ', ';
+        return resultStr;
+        }
+
+        let users = [
+        { name: 'Tim', age: 40 },
+        { name: 'Satya', age: 30 },
+        { name: 'Sundar', age: 50 }
+        ];
     </script>
 
 </body>
