@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <script>
+        const obj = { key: [1000, 20, 50, 500],}
+        //위처럼 what의 키 값이 배열이아닌 문자열이면 이걸 다시 배열로 넣어줄 필요가 있음.
+
+        let output = getElementsLessThan100AtProperty(obj, 'key');
+        console.log(output); // --> [20, 50]
+
+        function lessThan100(number) {
+            return number < 100;
+        }
+
+        function getElementsLessThan100AtProperty(obj, property) {
+            if(Array.isArray(obj[property])) {
+                return obj[property].filter(lessThan100) //키를 읽을땐 대괄호였어...
+            }
+        }
+
+
+    </script>
+
+</body> 
+</html>
