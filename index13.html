@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let output = sumOfArraysInArray([
+            [1, 2],
+            [undefined, 4, '5'],
+            [9, 'hello'],
+        ]);
+
+
+        function sumOfArraysInArray(arr) {
+            const cc = []
+            let output = 0
+            const aa = arr.filter(i => { // i의 배열에서 number만 걸러내야함.
+                const bb = i.filter(j => {
+                            if(typeof(j)==='number') {
+                                return j
+                            } else {
+                                return ''
+                            }
+                })
+                let ee = bb.reduce(function(a,b) {
+                    return a+b
+                })
+                output = output + ee
+            })
+
+            return output
+        }
+
+//2차원 배열을 입력받아 모든 수의 합을 return
+//마지막 문제다 ㅠㅠㅠ
+
+    </script>
+    
+</body>
+</html>
