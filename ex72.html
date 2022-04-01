@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 적용,해제를 하는 버튼 생성과 이벤트 적용 상태에대한 출력 예제</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.createElement('h1')
+            const linkButton = document.createElement('button')
+            const unlinkButton = document.createElement('button')
+            const statusDisplay = document.createElement('div')
+
+            document.body.appendChild(header)
+            document.body.appendChild(linkButton)
+            document.body.appendChild(unlinkButton)
+            document.body.appendChild(statusDisplay)
+            
+            let i = 0
+            let statusBoolean = false
+
+            header.innerText = `클릭 횟수: ${i}`
+            linkButton.innerText = '이벤트 연결'
+            unlinkButton.innerText = '이벤트 제거'
+            statusDisplay.textContent = '이벤트 연결상태 :'
+
+            const hskim = (evnet)=>{  //꼭 이벤트 함수를 제거하기 위해서는 제거할 이벤트의 대상 매개변수로 event가 들어가야함. 
+                                    // 여기서  event라 함은 해당 이벤트가 발생했을 때, 그 이벤트의 첫번째 매개변수로 가져온다라는것을 기억해야함.
+                i=i+1
+                header.innerText = `클릭 횟수: ${i}`
+            }
+
+            linkButton.addEventListener('click',()=>{
+                if(statusBoolean===false){
+                    header.addEventListener('click',hskim)                    
+                    statusDisplay.textContent = `이벤트 연결상태 : 연결`
+                    statusBoolean = true                    
+                }
+            })
+
+            unlinkButton.addEventListener('click',()=>{
+                if(statusBoolean===true){
+                    header.removeEventListener('click',hskim)                    
+                    statusDisplay.textContent = `이벤트 연결상태 : 해제`
+                    statusBoolean = false
+                }
+            })
+        })
+    </script>
+    <style>
+        h1 {
+            user-select: none;
+        }
+        button {
+            user-select: none;
+        }
+        div {
+            user-select: none;
+        }
+
+
+    </style>
+</head>
+    <body>
+           
+
+
+
+        
+    </body>    
+</html>
