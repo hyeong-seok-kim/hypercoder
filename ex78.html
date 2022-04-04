@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>버튼을 누를때 어떤 행동을 하게 만드는 클릭 이벤트 사용</title>
+    <script>
+        document.addEventListener('DOMContentLoaded',()=>{
+            const buttonA = document.querySelector('button')
+            const buttonB = document.querySelector('input[type=button]')
+            buttonA.addEventListener('click',(event)=>{
+                event.currentTarget.textContent += '글자'
+            })
+            buttonB.addEventListener('click',(event)=>{
+                event.currentTarget.value += '글자'
+            })
+
+
+        })
+
+    </script>
+</head>
+<body>
+    <button>글자</button>
+    <input type="button" value="글자">
+    <form action="">
+        이메일 형식을 입력해주세요<br>
+        <input type="text" name="test" id="">
+        <input type="submit" value="글자">
+    </form>
+</body>
+</html>

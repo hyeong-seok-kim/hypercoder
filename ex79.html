@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input type submit 타입을 사용하는 예제 해보기</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.querySelector('form')
+            form.addEventListener('submit', (event) => {
+                const text = document.querySelector('input[type=text]')
+                
+                if (text.value.indexOf('@') >= 0) {
+                    alert('정상적으로 등록되었습니다.')
+                }
+                else {
+                    alert('이메일 형식으로 기재해주세요.')
+                    event.preventDefault()
+                }
+            })
+        })
+
+    </script>
+</head>
+<body>
+    <form action="">
+        이메일을 입력해주세요 <br>
+        <input type="text" name="test" id="">
+        <input type="submit" value="등록">
+
+    </form>
+    
+</body>
+</html>
