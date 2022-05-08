@@ -1,121 +1,112 @@
 // 문제
-// 부분적으로 오름차순 정렬*된 정수의 배열(rotated)과 정수(target)를 입력받아 target의 인덱스를 리턴해야 합니다.
+// 다음의 조건을 만족하면서 현재의 비밀번호('curPwd')를 새 비밀번호(newPwd)로 변경하는 데 필요한 최소 동작의 수를 리턴해야 합니다.
 
-// 부분적으로 정렬된 배열: 배열을 왼쪽 혹은 오른쪽으로 0칸 이상 순환 이동할 경우 완전히 정렬되는 배열
-// 예시: [4, 5, 6, 0, 1, 2, 3]은 왼쪽으로 3칸 또는 오른쪽으로 4칸 순환 이동할 경우 완전히 정렬됩니다.
+// 한 번에 한 개의 숫자만 변경가능하다.
+// 4자리의 소수(prime)인 비밀번호로만 변경가능하다.
+// 정리하면, 비밀번호가 계속 소수를 유지하도록 숫자 한 개씩을 바꿔갈 때 현재 비밀번호에서 새 비밀번호로 바꾸는 데 최소 몇 개의 숫자를 변경해야 하는지를 리턴해야 합니다.
 
 // 입력
-
-// 인자 1 : rotated
-// number 타입을 요소로 갖는 배열
-// rotated[i]는 정수
-
-// 인자 2 : target
-// number 타입의 정수
-
+// 인자 1 : curPwd
+// number 타입의 1,000 이상 9,999 이하의 자연수
+// 인자 2 : newPwd
+// number 타입의 1,000 이상 9,999 이하의 자연수
 // 출력
 // number 타입을 리턴해야 합니다.
-
 // 주의사항
-// rotated에 중복된 요소는 없습니다.
-// target이 없는 경우, -1을 리턴해야 합니다.
+// 4자리인 소수는 1,000 이상의 소수를 말합니다.(0011, 0997 등은 제외)
 
-// // 
-// const rotatedArraySearch = function (rotated, target) {
-//     const maxNumber = Math.max(...rotated); // ---> 6
-//     const maxNumberIndex = rotated.indexOf(maxNumber) ;// 2번 인덱스에 가장 큰 값이 있음.
-//     // 그럼 0번 인덱스부터 2번인덱스까지 잘라서 뒤로 붙여주면 됨.
-//     const sliceFront = rotated.slice(0,maxNumberIndex+1); // 0번 인덱스부터 2번 인덱스까지 잘랏음.
-//     const sliceRear = rotated.slice(4);    // 3번 인덱스부터 잘랏음.
-//     // 이제 이 둘을 합침
-//     const mergeArray = sliceRear.concat(sliceFront);
-//     //console.log(mergeArray)
-//     // 이진 탐색으로 탐색 시작.
-    
-//     // 재귀함수를 이용해서 찾아본다.
-//     const two = function(filterArray, array, target) {
-//         const 기준index = Math.round(filterArray.length/2);
-//         console.log(`기준 인덱스 : ${기준index}`)
-//         console.log(array)
-//         console.log(filterArray)
-//         console.log('---------')
-        
-//         if(filterArray[기준index] > target) {
-//             console.log('a')
-//             // 가운데라고 할 수 있는 숫자가 타겟보다 크면,
-//             two(filterArray.slice(0, 기준index), array, target);
-//         } else if(filterArray[기준index] < target) {
-//             console.log('b')
-//             two(filterArray.slice(기준index+1), array, target)
-//         } else if(filterArray[기준index] === target) {
-//             console.log('c')
-//         }
-        
-        
-//     }
-//     // 재귀함수 실행.
-//     two(mergeArray, mergeArray ,target);
-// };
 
-// let output = rotatedArraySearch([4, 5, 6, 0, 1, 2, 3], 2);
-// console.log(output); // --> 5
+// 우선 소수란 1과 자시 자신만을 약수로 가지는 수.
 
-// naive solution
-// const rotatedArraySearch = (rotated, target) => {
-//   for (let i = 0; i < rotated.length; i++) {
-//     if (rotated[i] === target) {
-//       return i;
-//     }
-//   }
-//   return -1;
-// };
-
-// 레퍼런스 코드
-const rotatedArraySearch = function (rotated, target) {
-  // left, right 값을 저장해주는 것이 핵심인데 자꾸 까먹음...
-  let left = 0,
-    right = rotated.length - 1;
-  // right값이 left보다 작아지는 순간까지 반복하는 반복문 생성
-  while (left <= right) {
-    // middle값을 찾는건 나랑 같았네,, 다만 나는 Math.round 메소드로 반올림을 해준 것.
-    let middle = parseInt((right + left) / 2);
-
-    // 레퍼런스에서는 재귀함수를 쓰지 않았음...
-    // 가운데 위치한 값이 당히 target이면 그냥 리턴하면 되니까.
-    if (rotated[middle] === target) {
-      // 밑에서 보니까 middle값을 -1, +1 해가면서 middle값으로 범위를 점차 줄여나가고
-      // middle값은 계속해서 인덱스 값을 저장하고 있으니 결과적으로 여기서 리턴하는 값이
-      // 처음에 받은 배열 인자의 주소값과의 비교에도 문제가 없는 결과 값을 가질 수 있는 것임.
-      return middle;
+const isPrime = (num) => {
+  // num이 2로 나누었을 때 0이면 일단 소수일 수가 없으니까 false일 것.
+  if (num % 2 === 0) return false;
+  // 제곱근을 반환하는 메소드 Math.sqrt()
+  let sqrt = parseInt(Math.sqrt(num));
+  // 
+  for (let divider = 3; divider <= sqrt; divider += 2) {
+    if (num % divider === 0) {
+      return false;
     }
-    // 가장 우측 값이 가장 좌측 값보다 크다는건 
-    // 여기서 첫 if문의 취지는 middle값 이동을 최소화하기 위함인듯함.
-    // 그래서 계산을 최소화 하려고.
-    if (rotated[left] < rotated[middle]) {
-      // 왼쪽 절반이 정렬되어 있는 상태
-      // target값이랑 매칭되는 값이 좌측에 있다는 뜻.
-      // 그래서 right의 값을 middle값에서 -1한 거로 정정한다.
-      if (target < rotated[middle] && rotated[left] <= target) {
-        right = middle - 1;
-      } // 
-        else {
-        left = middle + 1;
-      }
-    } else {
-      // 오른쪽 절반이 정렬되어 있는 상태
-      if (target <= rotated[right] && rotated[middle] < target) {
-        left = middle + 1;
-      } else {
-        right = middle - 1;
+  }
+  return true;
+};
+
+// 4자리 수를 받아서 각 자리수의 수들의 배열로 변환하는 함수
+//  let output = splitNum(3359);
+//  console.log(output); // --> [3, 3, 5, 9]
+const splitNum = (num) => {
+  const digits = num.toString().split('');
+  return digits.map((d) => Number(d));
+};
+
+// 길이의 4의 수 배열을 받아서, 4자리의 수로 변환하는 함수
+//  let output = splitNum([3, 3, 5, 9]);
+//  console.log(output); // --> 3359
+const joinDigits = (digits) => Number(digits.join(''));
+
+const primePassword = (curPwd, newPwd) => {
+  if (curPwd === newPwd) return 0;
+  // bfs를 위해 queue를 선언
+  let front = 0;
+  let rear = 0;
+  const queue = [];
+  const isEmpty = (queue) => front === rear;
+  const enQueue = (queue, item) => {
+    queue.push(item);
+    rear++;
+  };
+  const deQueue = (queue) => {
+    return queue[front++];
+    // const item = queue[front];
+    // front++;
+    // return item;
+  };
+
+  // 각 4자리의 방문 여부를 저장하는 배열
+  // 한 번 방문한 수(가장 최소의 동작으로 만든 수)는 다시 방문할 필요가 없다.
+  const isVisited = Array(10000).fill(false);
+  isVisited[curPwd] = true;
+  // bfs를 위한 시작점
+  // 큐에는 [필요한 동작 수, 비밀번호]가 저장된다.
+  enQueue(queue, [0, curPwd]);
+  // bfs는 큐가 빌(empty) 때까지 탐색한다.
+  while (isEmpty(queue) === false) {
+    const [step, num] = deQueue(queue);
+    // 각 자리수 마다 변경이 가능하므로 4번의 반복이 필요하다.
+    for (let i = 0; i < 4; i++) {
+      const digits = splitNum(num);
+      // 0부터 9까지 시도한다.
+      for (let d = 0; d < 10; d++) {
+        // 각 자리수마다 원래 있던 수(digits[i])는 피해야 한다.
+        if (d !== digits[i]) {
+          // 현재 자리수의 수를 변경하고,
+          digits[i] = d;
+          // 변경한 후 4자리 수를 구한다.
+          const next = joinDigits(digits);
+          // 만약 이 수가 새 비밀번호와 같다면 리턴한다.
+          // next는 deQueue된 num으로부터 1단계 다음에 도달한 수이다.
+          if (next === newPwd) return step + 1;
+          // 1,000보다 큰 소수여야 하고, 방문된 적이 없어야 한다.
+          if (next > 1000 && isPrime(next) && isVisited[next] === false) {
+            // 방문 여부를 표시하고,
+            isVisited[next] = true;
+            // 큐에 넣는다.
+            enQueue(queue, [step + 1, next]);
+          }
+        }
       }
     }
   }
 
+  // 큐가 빌 때까지, 즉 모든 경우의 수를 탐색할 때까지 리턴되지 않은 경우
+  // 현재 비밀번호에서 새 비밀번호를 만들 수 없다.
   return -1;
 };
 
-let output = rotatedArraySearch([4, 5, 6, 0, 1, 2, 3], 2);
-console.log(output); // --> 5
 
-output = rotatedArraySearch([4, 5, 6, 0, 1, 2, 3], 100);
-console.log(output); // --> -1
+let output = primePassword(1033, 1033);
+console.log(output); // --> 0
+
+output = primePassword(3733, 8779);
+console.log(output); // --> 3 (3733 -> 3739 -> 3779 -> 8779)
