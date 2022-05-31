@@ -1,36 +1,46 @@
 pragma solidity ^0.4.19;
+import "./zombiefactory.sol";
 
-contract ZombieFactory {
-    event NewZombie(uint256 zombieId, string name, uint256 dna);
+contract KittyInterface {
+    function getKitty(uint256 _id)
+        external
+        view
+        returns (
+            bool isGestating,
+            bool isReady,
+            uint256 cooldownIndex,
+            uint256 nextActionAt,
+            uint256 siringWithId,
+            uint256 birthTime,
+            uint256 matronId,
+            uint256 sireId,
+            uint256 generation,
+            uint256 genes
+        );
+}
 
-    uint256 dnaDigits = 16;
-    uint256 dnaModulus = 10**dnaDigits;
+contract ZombieFeeding is ZombieFactory {
+    address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
+    KittyInterface kittyContract = KittyInterface(ckAddress);
 
-    struct Zombie {
-        string name;
-        uint256 dna;
+    function feedAndMultiply(
+        uint256 _zombieId,
+        uint256 _targetDna,
+        string _species
+    ) public {
+        require(msg.sender == zombieToOwner[_zombieId]);
+        Zombie storage myZombie = zombies[_zombieId];
+        _targetDna = _targetDna % dnaModulus;
+        uint256 newDna = (myZombie.dna + _targetDna) / 2;
+        if (keccak256(_species) == keccak256("kitty")) {
+            newDna = newDna - (newDna % 100) + 99;
+        }
+        _createZombie("NoName", newDna);
     }
 
-    Zombie[] public zombies;
-
-    mapping(uint256 => address) public zombieToOwner;
-    mapping(address => uint256) ownerZombieCount;
-
-    function _createZombie(string _name, uint256 _dna) internal {
-        uint256 id = zombies.push(Zombie(_name, _dna)) - 1;
-        zombieToOwner[id] = msg.sender;
-        ownerZombieCount[msg.sender]++;
-        NewZombie(id, _name, _dna);
-    }
-
-    function _generateRandomDna(string _str) private view returns (uint256) {
-        uint256 rand = uint256(keccak256(_str));
-        return rand % dnaModulus;
-    }
-
-    function createRandomZombie(string _name) public {
-        require(ownerZombieCount[msg.sender] == 0);
-        uint256 randDna = _generateRandomDna(_name);
-        _createZombie(_name, randDna);
+    function feedOnKitty(uint256 _zombieId, uint256 _kittyId) public {
+        uint256 kittyDna;
+        (, , , , , , , , , kittyDna) = kittyContract.getKitty(_kittyId);
+        feedAndMultiply(_zombieId, kittyDna, "kitty");
     }
 }
